@@ -1,0 +1,93 @@
+# ST 512 HW 2 - Savannah Harrison
+
+## #1
+
+```{r}
+lima <- read.table("lima.txt", header = TRUE)
+```
+
+```{r}
+lima_model <- lm(ascorbic ~ cultivar + pct.dry, data = lima)
+summary(lima_model)
+```
+
+a\) **standard deviation of the residual errors =** **8.186**
+
+b\) **C - Minimally plausible**
+
+c\) **p-value: 8.303e-06, test statistic: 1.49e-06**
+
+d\) **From the anova table, we would reject the null and conclude there is a difference between the ascorbic acid of plants from different cultivars when comparing plants with the same percent dry matter.**
+**F statistic: 6.3742, p-value: 0.0145**
+
+    ```{r}
+    anova(lima_model)
+    ```
+    e\)
+
+```{r}
+#Creating plot of the residuals vs. the fitted values
+residualplot <- plot(x = fitted(lima_model), y = resid(lima_model), xlab = "Fitted values", ylab = "Residuals")
+abline(h = 0, lty = "dashed", col = "blue")
+```
+
+```{r}
+#created Q-Q plot
+QQplot <- qqnorm(y = resid(lima_model))
+          qqline(y = resid(lima_model), col = "blue")
+```
+
+f)  **While it seems like there may be some small spread in the residual plot, it is not large enough to violate the constant error variance assumption. For the Q-Q plot, it looks like the ends might be drifting away from the line, but just like the residual plot, this discrepency is not large enough to violate the normality assumption.**
+
+## #2
+
+a)  **(0.101,0.185)**
+
+```{r}
+#Estimate +- (SE)(Critical Value) df = 21
+.143+(.020*2.0796)
+.143-(.020*2.0796)
+```
+
+b)  
+
+    (i) **YES**
+    (ii) **NO**
+
+## #3
+
+a)  When comparing two cereals with the same fat content, fiber content, and manufacturer, a cereal with 5 grams of sugar per serving will have a nutritional rating that is **3.58 smaller** than a cereal with 3 grams of sugar per serving, on average.
+
+    ```{r}
+    -1.79*2
+    ```
+
+b)  When comparing two cereals with the same fat content, fiber content, and sugar content, a cereal manufactured by Quaker (Q) will have a nutritional rating that is **4.44 larger** than a cereal manufactured by General Mills (GM).
+
+## #4
+
+**29.14** 
+
+fat = 0 fiber = 1.0 sugars = 14
+
+```{r}
+50.23 + (-3.57*0) + (2.9*1.0) + (-1.79*14) + (1.07*1)
+```
+
+## #5
+
+**4.06**
+
+```{r}
+#observed - predicted
+33.2 - 29.14
+```
+
+## #6
+
+**20.139**
+
+```{r}
+#(SS(Model)/df) / (SS(Error)/df)
+(1270/3)/(1030/49)
+```

@@ -37,7 +37,7 @@ QQplot <- qqnorm(y = resid(lima_model))
           qqline(y = resid(lima_model), col = "blue")
 ```
 
-f)  **While it seems like there may be some small spread in the residual plot, it is not large enough to violate the constant error variance assumption. For the Q-Q plot, it looks like the ends might be drifting away from the line, but just like the residual plot, this discrepency is not large enough to violate the normality assumption.**
+f)  **While it seems like there may be some spread in the residual plot, it is not large enough to violate the constant error variance assumption. For the Q-Q plot, it looks like the ends might be drifting away from the line, but just like the residual plot, this discrepency is not large enough to violate the normality assumption.**
 
 ## #2
 
